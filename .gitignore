@@ -1,0 +1,45 @@
+# Project-local Codex/OMX setup
+.codex/*
+!.codex/agents/
+!.codex/agents/**
+!.codex/skills/
+!.codex/skills/**
+.codex/skills/.system/**
+!.codex/prompts/
+!.codex/prompts/**
+.omx/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.vite/
+
+# Test and coverage output
+coverage/
+playwright-report/
+test-results/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Package-manager caches
+.npm/
+.pnpm-store/
