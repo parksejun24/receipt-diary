@@ -54,18 +54,9 @@ export default function App() {
   return (
     <main className="app-shell">
       <div className="app-frame">
-        <section className="writer-panel" aria-label="일기 작성">
-          <DiaryWriter onCreateDiary={handleCreateDiary} onOpenArchive={() => setView("archive")} />
-        </section>
-
         <section className="receipt-panel" aria-live="polite">
           {view === "writer" && (
-            <ArchiveReceipt
-              entries={entries}
-              selectedId={selectedEntry?.id ?? null}
-              onOpenEntry={openEntry}
-              onCreateNew={() => setView("writer")}
-            />
+            <DiaryWriter onCreateDiary={handleCreateDiary} onOpenArchive={() => setView("archive")} />
           )}
 
           {view === "archive" && (
