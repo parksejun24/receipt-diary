@@ -27,11 +27,14 @@ The receipt theme is a visual and structural metaphor. The MVP must not quantify
 
 ## Design Direction From Reference
 
+- Reference image path: `docs/design/reference/receipt-diary-reference.png`
+- Reference usage guide: `docs/design/REFERENCE_DESIGN.md`
 - Main visual metaphor: a long torn paper receipt on a dark background.
 - Typography: monospace or receipt-like font, strict alignment, dashed separators.
 - Color: mostly black text on warm off-white paper, with subtle gray texture and shadows.
 - Layout: mobile-first single receipt; desktop can use a two-column archive/detail layout.
 - Receipt content should include metadata, summaries, and hidden value lines instead of price rows.
+- Treat the reference as an atmosphere guide, not a pixel-perfect target.
 
 ## Recommended Technical Approach
 
@@ -188,6 +191,8 @@ Interactions:
    - Enforce no-score/no-rank/no-money language in prompt/output contract.
 
 4. Build receipt visual system
+   - Read `docs/design/REFERENCE_DESIGN.md` before implementing visual components.
+   - Use `docs/design/reference/receipt-diary-reference.png` as the visual mood reference.
    - Create `ReceiptShell` for torn-paper look.
    - Add dashed separators, receipt typography, shadows, paper texture, and narrow receipt width.
    - Verify long Korean text does not clip or overlap.
@@ -238,6 +243,7 @@ Interactions:
   - run typecheck/build
   - run tests
   - inspect app in browser
+  - compare the first viewport against `docs/design/reference/receipt-diary-reference.png` for mood and receipt metaphor only
 
 ## Risks And Mitigations
 
