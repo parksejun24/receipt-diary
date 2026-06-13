@@ -10,6 +10,8 @@ const blockedWords = [
   "total",
   "score",
   "rank",
+  "best day",
+  "worst day",
   "streak",
   "performance dashboard",
 ];

@@ -8,8 +8,10 @@ const blockedWords = [
   "total",
   "score",
   "rank",
+  "best day",
+  "worst day",
   "streak",
-  "dashboard",
+  "performance dashboard",
 ];
 
 describe("mock interpretation", () => {
@@ -30,7 +32,11 @@ describe("mock interpretation", () => {
   it("keeps generated interpretation away from blocked product concepts", () => {
     const interpretation = createMockInterpretation({
       diaryEntryId: "diary-1",
-      body: "오늘은 긴 하루였다. 작은 장면을 다시 바라보고 싶다.",
+      body: [
+        "I wrote cost amount price total score rank best day worst day streak performance dashboard in my diary.",
+        "오늘은 긴 하루였다.",
+        "작은 장면을 다시 바라보고 싶다.",
+      ].join(" "),
       sequenceNumber: 1,
       generatedAt: "2026-06-14T00:00:00.000Z",
     });
