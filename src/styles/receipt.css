@@ -1,0 +1,430 @@
+:root {
+  color: #181714;
+  background: #181816;
+  font-family:
+    "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --paper: #f4efe4;
+  --paper-deep: #e5dccd;
+  --ink: #1d1b17;
+  --ink-soft: #5d574f;
+  --line: rgba(29, 27, 23, 0.42);
+  --shadow: rgba(0, 0, 0, 0.38);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+textarea,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 28px 16px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.045), transparent 22rem),
+    linear-gradient(135deg, #161615 0%, #24231f 48%, #111110 100%);
+}
+
+.app-frame {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(320px, 520px);
+  gap: 28px;
+  align-items: start;
+  justify-content: center;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.writer-panel {
+  position: sticky;
+  top: 24px;
+}
+
+.diary-writer {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  color: var(--paper);
+  border: 1px solid rgba(244, 239, 228, 0.18);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.diary-writer__topline,
+.receipt-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.eyebrow,
+.receipt-kicker,
+.summary-label,
+.field-label,
+.original-written {
+  margin: 0;
+  font-size: 0.76rem;
+  letter-spacing: 0;
+  color: currentColor;
+}
+
+.field-label {
+  margin-top: 8px;
+  color: rgba(244, 239, 228, 0.72);
+}
+
+.date-input,
+.diary-textarea {
+  width: 100%;
+  border: 1px solid rgba(244, 239, 228, 0.24);
+  border-radius: 2px;
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.date-input {
+  min-height: 42px;
+  padding: 0 12px;
+}
+
+.diary-textarea {
+  min-height: 320px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.78;
+}
+
+.diary-textarea::placeholder {
+  color: rgba(244, 239, 228, 0.44);
+}
+
+.form-message {
+  margin: 0;
+  color: #ead8b8;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.primary-action,
+.secondary-action,
+.text-button,
+.icon-button {
+  border: 0;
+  color: inherit;
+  background: transparent;
+}
+
+.primary-action,
+.secondary-action {
+  min-height: 44px;
+  border: 1px dashed currentColor;
+  padding: 0 14px;
+}
+
+.primary-action {
+  color: var(--paper);
+}
+
+.secondary-action {
+  width: 100%;
+  color: var(--ink);
+}
+
+.text-button {
+  padding: 4px 0;
+  color: rgba(244, 239, 228, 0.78);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.4rem;
+}
+
+.receipt-panel {
+  min-width: 0;
+}
+
+.receipt-paper {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 480px);
+  min-height: 720px;
+  margin: 0 auto;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.035)),
+    linear-gradient(180deg, #f8f2e7 0%, var(--paper) 56%, #eee6d8 100%);
+  box-shadow:
+    0 22px 38px var(--shadow),
+    inset 0 0 30px rgba(86, 67, 38, 0.08);
+}
+
+.receipt-paper::before,
+.receipt-paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background:
+    linear-gradient(135deg, transparent 8px, var(--paper) 0) 0 0 / 16px 12px,
+    linear-gradient(225deg, transparent 8px, var(--paper) 0) 8px 0 / 16px 12px;
+  opacity: 0.72;
+  z-index: 2;
+}
+
+.receipt-paper::before {
+  top: 0;
+}
+
+.receipt-paper::after {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.receipt-paper__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(108deg, transparent 0 34%, rgba(73, 61, 43, 0.08) 35%, transparent 37% 100%),
+    linear-gradient(74deg, transparent 0 62%, rgba(73, 61, 43, 0.06) 63%, transparent 65% 100%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.018) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 18% 32%, rgba(90, 70, 45, 0.08), transparent 9rem),
+    radial-gradient(circle at 76% 74%, rgba(90, 70, 45, 0.06), transparent 8rem);
+  mix-blend-mode: multiply;
+}
+
+.receipt-paper__content {
+  position: relative;
+  z-index: 1;
+  padding: 52px 34px 44px;
+}
+
+.receipt-header {
+  text-align: center;
+}
+
+.receipt-header h1 {
+  margin: 16px 0 0;
+  font-size: clamp(1.45rem, 6vw, 2rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.receipt-nav p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.dash-line {
+  height: 1px;
+  margin: 28px 0;
+  background-image: linear-gradient(to right, var(--line) 55%, transparent 0);
+  background-size: 10px 1px;
+}
+
+.receipt-meta {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.receipt-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.receipt-meta dt,
+.receipt-meta dd {
+  margin: 0;
+}
+
+.receipt-meta dt,
+.receipt-kicker,
+.summary-label {
+  color: var(--ink-soft);
+}
+
+.receipt-summary,
+.receipt-phrase,
+.hidden-values,
+.empty-receipt,
+.original-body {
+  line-height: 1.88;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.receipt-summary p,
+.receipt-phrase p,
+.empty-receipt p {
+  margin: 0;
+}
+
+.receipt-summary p:last-child {
+  margin-top: 10px;
+  font-size: 1.04rem;
+}
+
+.receipt-phrase {
+  text-align: center;
+  font-size: 1.12rem;
+}
+
+.hidden-values {
+  margin-top: 34px;
+}
+
+.hidden-values h2 {
+  margin: 0 0 18px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.hidden-values ul,
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden-values li {
+  padding: 18px 0;
+  border-top: 1px dotted rgba(29, 27, 23, 0.18);
+}
+
+.hidden-values li:first-child {
+  border-top: 0;
+}
+
+.hidden-values p {
+  margin: 0;
+}
+
+.hidden-values small {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.archive-list {
+  display: grid;
+}
+
+.archive-row {
+  display: grid;
+  grid-template-columns: 88px 76px 1fr;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px dotted rgba(29, 27, 23, 0.22);
+  color: var(--ink);
+  text-align: left;
+  background: transparent;
+}
+
+.archive-row span {
+  white-space: nowrap;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.archive-row strong {
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.archive-row--active strong {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.empty-receipt {
+  display: grid;
+  gap: 14px;
+  min-height: 240px;
+  align-content: center;
+  text-align: center;
+}
+
+.receipt-footer {
+  margin-top: 32px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.original-written {
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.original-body {
+  margin-top: 24px;
+  white-space: pre-wrap;
+  font-family:
+    "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@media (max-width: 840px) {
+  .app-shell {
+    padding: 16px 12px 28px;
+  }
+
+  .app-frame {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .writer-panel {
+    position: static;
+  }
+
+  .diary-textarea {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .receipt-paper__content {
+    padding: 46px 22px 38px;
+  }
+
+  .archive-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .receipt-meta div {
+    display: grid;
+    gap: 4px;
+  }
+}
